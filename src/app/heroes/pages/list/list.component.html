@@ -17,33 +17,33 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-        <mat-cell *matCellDef="let heroe" data-label="id"> {{heroe.id}} </mat-cell>
+        <mat-cell *matCellDef="let hero" data-label="id"> {{hero.id}} </mat-cell>
       </ng-container>
   
       <!-- Nombre Column -->
       <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-        <mat-cell *matCellDef="let heroe" data-label="nombre"> {{heroe.nombre}} </mat-cell>
+        <mat-cell *matCellDef="let hero" data-label="nombre"> {{hero.nombre}} </mat-cell>
       </ng-container>
   
       <!-- Biografia Column -->
       <ng-container matColumnDef="bio">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Biografia </mat-header-cell>
-        <mat-cell *matCellDef="let heroe" data-label="bio"> {{heroe.bio}} </mat-cell>
+        <mat-cell *matCellDef="let hero" data-label="bio"> {{hero.bio}} </mat-cell>
       </ng-container>
 
       <!-- Imagen Column -->
       <ng-container matColumnDef="img">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </mat-header-cell>
-        <mat-cell *matCellDef="let heroe" data-label="img">
-             <img mat-card-image class="small-flag" [src]="heroe | image"> 
+        <mat-cell *matCellDef="let hero" data-label="img">
+             <img mat-card-image class="small-flag" [src]="hero | image"> 
         </mat-cell>
       </ng-container>
   
       <!-- Aparición Column -->
       <ng-container matColumnDef="aparicion">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Aparición </mat-header-cell>
-        <mat-cell *matCellDef="let heroe" data-label="aparicion"> {{heroe.aparicion}} </mat-cell>
+        <mat-cell *matCellDef="let hero" data-label="aparicion"> {{hero.aparicion}} </mat-cell>
       </ng-container>
 
       
@@ -51,23 +51,23 @@
       <!-- Accion Column -->
       <ng-container matColumnDef="accion">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Acción </mat-header-cell>
-        <mat-cell *matCellDef="let heroe" data-label="accion">
+        <mat-cell *matCellDef="let hero" data-label="accion">
             <button mat-button 
                     color="info"
-                    [routerLink]="['/heroes', heroe.id ]">
+                    [routerLink]="['/heroes', hero.id ]">
                     <mat-icon>visibility</mat-icon>
                 Ver
             </button>
 
             <button mat-button 
                     color="info"
-                    [routerLink]="['/heroes/editar', heroe.id ]">
+                    [routerLink]="['/heroes/edit', hero.id ]">
                     <mat-icon>edit</mat-icon>
                 Editar
             </button>
             <button 
                     mat-button
-                    (click)="deleteHeroe(heroe)"
+                    (click)="deleteHero(hero)"
                     color="warn">
                 <mat-icon>remove</mat-icon>
                 Borrar

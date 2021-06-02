@@ -1,8 +1,8 @@
 
 <h1>
-    {{ ( heroe.id )? 'Editar' : 'Nuevo' }}
+    {{ ( hero.id )? 'Editar' : 'Nuevo' }}
     Héroe
-    <small>{{ heroe.nombre }}</small> 
+    <small>{{ hero.nombre }}</small> 
 </h1>
 
 <form autocomplete="off" [formGroup]="myForm">
@@ -53,7 +53,7 @@
             <mat-form-field>
                 <mat-label>*Creador</mat-label>
                 <mat-select formControlName="casa">
-                    <mat-option *ngFor="let editor of editores"
+                    <mat-option *ngFor="let editor of editors"
                                 [value]="editor.id">
                         {{ editor.desc }}
                     </mat-option>
@@ -81,12 +81,12 @@
                         (click)="save()"                      
                         >
                     <mat-icon>edit</mat-icon>
-                    {{ ( heroe.id )? 'Actualizar' : 'Crear' }}
+                    {{ ( hero.id )? 'Actualizar' : 'Crear' }}
                 </button>
                 <span class="spacer"></span>
-                <button *ngIf="heroe.id"
+                <button *ngIf="hero.id"
                         mat-raised-button
-                        (click)="deleteHeroe()"
+                        (click)="deleteHero()"
                         color="warn">
                     <mat-icon>remove</mat-icon>
                     Borrar
@@ -94,7 +94,7 @@
             </div>
         </div>
         <div fxFlex="50">
-            <img [src]="heroe | image">
+            <img [src]="hero | image">
         </div>
     </div>
 </form>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
-import { Heroe } from '../../interfaces/heroes.interface'
+import { Hero } from '../../interfaces/heroes.interface'
 import { HeroesService } from '../../services/heroes.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
@@ -14,14 +14,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
  * @author Kevin Suarez
  */
 export class SearchComponent {
-  miFormulario: FormGroup = this._fb.group({
+  myForm: FormGroup = this._fb.group({
     // eslint-disable-next-line @typescript-eslint/unbound-method
     term: ['', [Validators.required]]
   })
 
   term = ''
-  heroes: Heroe[] = []
-  heroeSeleccionado: Heroe | undefined
+  heroes: Hero[] = []
+  heroSelected: Hero | undefined
 
   constructor(
     private _fb: FormBuilder,
@@ -33,10 +33,12 @@ export class SearchComponent {
    */
   search(): void {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    this.term = String(this.miFormulario.value.term)
-    this._heroesService.getSuggestions(this.term.trim()).subscribe((heroes) => {
-      this.heroes = heroes
-    })
+    this.term = String(this.myForm.value.term)
+    this._heroesService
+      .getSuggestions(this.term.trim())
+      .subscribe((heroes: Hero[]) => {
+        this.heroes = heroes
+      })
   }
 
   /**
@@ -46,17 +48,17 @@ export class SearchComponent {
    */
   selectOption(event: MatAutocompleteSelectedEvent): void {
     if (!event.option.value) {
-      this.heroeSeleccionado = undefined
+      this.heroSelected = undefined
       return
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const heroe: Heroe = event.option.value
-    this.term = heroe.nombre
+    const hero: Hero = event.option.value
+    this.term = hero.nombre
 
-    this._heroesService.getHeroeById(heroe.id!).subscribe((heroe) => {
-      this.heroeSeleccionado = heroe
-      this.miFormulario.reset()
+    this._heroesService.getHeroById(hero.id!).subscribe((hero: Hero) => {
+      this.heroSelected = hero
+      this.myForm.reset()
     })
   }
 }

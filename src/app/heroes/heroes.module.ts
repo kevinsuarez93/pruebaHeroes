@@ -8,10 +8,10 @@ import { MaterialModule } from '../material/material.module'
 
 import { AddComponent } from './pages/add/add.component'
 import { SearchComponent } from './pages/search/search.component'
-import { HeroeComponent } from './pages/heroe/heroe.component'
+import { HeroComponent } from './pages/hero/hero.component'
 import { HomeComponent } from './pages/home/home.component'
 import { ListComponent } from './pages/list/list.component'
-import { HeroeCardComponent } from './components/heroe-card/heroe-card.component'
+import { HeroCardComponent } from './components/hero-card/hero-card.component'
 import { ImagePipe } from './pipes/image.pipe'
 import { ConfirmComponent } from './components/confirm/confirm.component'
 import { SharedModule } from '../shared/shared.module'
@@ -20,10 +20,10 @@ import { SharedModule } from '../shared/shared.module'
   declarations: [
     AddComponent,
     SearchComponent,
-    HeroeComponent,
+    HeroComponent,
     HomeComponent,
     ListComponent,
-    HeroeCardComponent,
+    HeroCardComponent,
     ImagePipe,
     ConfirmComponent
   ],

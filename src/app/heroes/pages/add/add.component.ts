@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute, Router } from '@angular/router'
 import { switchMap } from 'rxjs/operators'
 
-import { Heroe } from '../../interfaces/heroes.interface'
+import { Hero } from '../../interfaces/heroes.interface'
 import { HeroesService } from '../../services/heroes.service'
 import { ConfirmComponent } from '../../components/confirm/confirm.component'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
@@ -33,7 +33,7 @@ export class AddComponent implements OnInit {
   })
 
   //Catalogo
-  editores = [
+  editors = [
     {
       id: 'DC Comics',
       desc: 'DC - Comics'
@@ -44,7 +44,7 @@ export class AddComponent implements OnInit {
     }
   ]
 
-  heroe: Heroe = {
+  hero: Hero = {
     id: '',
     nombre: '',
     bio: '',
@@ -66,21 +66,21 @@ export class AddComponent implements OnInit {
    * Method to initialize variables and methods
    */
   ngOnInit(): void {
-    if (!this._router.url.includes('editar')) {
+    if (!this._router.url.includes('edit')) {
       return
     }
 
     this._activatedRoute.params
-      .pipe(switchMap(({ id }) => this._heroesService.getHeroeById(id)))
-      .subscribe((heroe: Heroe) => {
-        this.heroe = heroe
+      .pipe(switchMap(({ id }) => this._heroesService.getHeroById(id)))
+      .subscribe((hero: Hero) => {
+        this.hero = hero
         this.myForm.reset({
-          id: heroe.id,
-          nombre: heroe.nombre,
-          bio: heroe.bio,
-          aparicion: heroe.aparicion,
-          casa: heroe.casa,
-          img: heroe.img
+          id: hero.id,
+          nombre: hero.nombre,
+          bio: hero.bio,
+          aparicion: hero.aparicion,
+          casa: hero.casa,
+          img: hero.img
         })
       })
   }
@@ -107,16 +107,16 @@ export class AddComponent implements OnInit {
       return
     }
 
-    const heroe = <Heroe>this.myForm.value
-    if (heroe.id) {
+    const hero = <Hero>this.myForm.value
+    if (hero.id) {
       // Update
-      this._heroesService.updateHeroe(heroe).subscribe(() => {
+      this._heroesService.updateHero(hero).subscribe(() => {
         void this._router.navigate(['/heroes/list'])
         this.showSnakbar('Registro actualizado')
       })
     } else {
       // create
-      this._heroesService.addHeroe(heroe).subscribe(() => {
+      this._heroesService.addHero(hero).subscribe(() => {
         void this._router.navigate(['/heroes/list'])
         this.showSnakbar('Registro creado')
       })
@@ -128,14 +128,14 @@ export class AddComponent implements OnInit {
   /**
    * Method to Delete a hero
    */
-  deleteHeroe(): void {
+  deleteHero(): void {
     const dialog = this.dialog.open(ConfirmComponent, {
       width: '250px',
-      data: this.heroe
+      data: this.hero
     })
     dialog.afterClosed().subscribe((result) => {
       if (result) {
-        this._heroesService.deleteHeroe(this.heroe.id!).subscribe(() => {
+        this._heroesService.deleteHero(this.hero.id!).subscribe(() => {
           void this._router.navigate(['/heroes'])
         })
       }

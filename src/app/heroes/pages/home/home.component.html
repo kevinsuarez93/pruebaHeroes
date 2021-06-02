@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen>
     
-    <!-- Aquí empieza el Menú -->
+    <!-- The Menu starts here -->
     <mat-sidenav #sidenav mode="push">
         <mat-toolbar color="primary">
             <span>Menu</span>
@@ -31,8 +31,8 @@
             </a>
         </mat-nav-list>
     </mat-sidenav>
-    <!-- Fin Menu -->
-    <!-- Aquí empieza Toolbar -->
+    <!-- End Menu -->
+    <!-- Toolbar starts here -->
     <mat-toolbar>
         <button mat-icon-button
                 (click) = "sidenav.toggle()">
@@ -44,10 +44,10 @@
             Logout            
         </button>
     </mat-toolbar>
-    <!-- Fin Toolbar -->
-    <!-- Aquí empieza contenido -->
+    <!-- End Toolbar -->
+    <!-- Content starts here -->
     <div class="container">
         <router-outlet></router-outlet>
     </div>
-    <!-- Fin de contenido-->
+    <!-- End of content-->
 </mat-sidenav-container>

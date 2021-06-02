@@ -1,4 +1,4 @@
-export interface Heroe {
+export interface Hero {
   id?: string
   nombre: string
   bio: string

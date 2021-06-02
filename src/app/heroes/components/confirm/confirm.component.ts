@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
-import { Heroe } from '../../interfaces/heroes.interface'
+import { Hero } from '../../interfaces/heroes.interface'
 
 @Component({
   selector: 'app-confirm',
@@ -15,7 +15,7 @@ import { Heroe } from '../../interfaces/heroes.interface'
 export class ConfirmComponent {
   constructor(
     private _dialogRef: MatDialogRef<ConfirmComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Heroe
+    @Inject(MAT_DIALOG_DATA) public data: Hero
   ) {}
 
   /**

@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator'
 import { MatTableDataSource } from '@angular/material/table'
 import { MatSort } from '@angular/material/sort'
 import { HeroesService } from '../../services/heroes.service'
-import { Heroe } from '../../interfaces/heroes.interface'
+import { Hero } from '../../interfaces/heroes.interface'
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmComponent } from '../../components/confirm/confirm.component'
 
@@ -17,7 +17,7 @@ import { ConfirmComponent } from '../../components/confirm/confirm.component'
  * @author Kevin Suarez
  */
 export class ListComponent implements AfterViewInit {
-  heroes: Heroe[] = []
+  heroes: Hero[] = []
   displayedColumns: string[] = [
     'id',
     'nombre',
@@ -26,7 +26,7 @@ export class ListComponent implements AfterViewInit {
     'aparicion',
     'accion'
   ]
-  dataSource = new MatTableDataSource<Heroe>(this.heroes)
+  dataSource = new MatTableDataSource<Hero>(this.heroes)
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
 
@@ -48,9 +48,9 @@ export class ListComponent implements AfterViewInit {
    * Method to query Heroes
    */
   getHeroes(): void {
-    this._heroesService.getHeroes().subscribe((heroes) => {
+    this._heroesService.getHeroes().subscribe((heroes: Hero[]) => {
       this.heroes = heroes
-      this.dataSource = new MatTableDataSource<Heroe>(heroes)
+      this.dataSource = new MatTableDataSource<Hero>(heroes)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.sort
     })
@@ -79,15 +79,15 @@ export class ListComponent implements AfterViewInit {
   /**
    * Method to delete Hero by id
    */
-  deleteHeroe(heroe: Heroe): void {
+  deleteHero(hero: Hero): void {
     const dialog = this.dialog.open(ConfirmComponent, {
       width: '250px',
-      data: heroe
+      data: hero
     })
 
     dialog.afterClosed().subscribe((result) => {
       if (result) {
-        this._heroesService.deleteHeroe(heroe.id!).subscribe(() => {
+        this._heroesService.deleteHero(hero.id!).subscribe(() => {
           this.getHeroes()
         })
       }

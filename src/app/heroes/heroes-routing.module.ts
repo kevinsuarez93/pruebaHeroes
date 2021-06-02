@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router'
 import { ListComponent } from './pages/list/list.component'
 import { AddComponent } from './pages/add/add.component'
 import { SearchComponent } from './pages/search/search.component'
-import { HeroeComponent } from './pages/heroe/heroe.component'
+import { HeroComponent } from './pages/hero/hero.component'
 import { HomeComponent } from './pages/home/home.component'
 
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
         component: AddComponent
       },
       {
-        path: 'editar/:id',
+        path: 'edit/:id',
         component: AddComponent
       },
       {
@@ -29,7 +29,7 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: HeroeComponent
+        component: HeroComponent
       },
       {
         path: '**',

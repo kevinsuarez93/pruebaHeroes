@@ -3,19 +3,19 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { switchMap } from 'rxjs/operators'
 
 import { HeroesService } from '../../services/heroes.service'
-import { Heroe } from '../../interfaces/heroes.interface'
+import { Hero } from '../../interfaces/heroes.interface'
 
 @Component({
-  selector: 'app-heroe',
-  templateUrl: './heroe.component.html',
-  styleUrls: ['./heroe.component.css']
+  selector: 'app-hero',
+  templateUrl: './hero.component.html',
+  styleUrls: ['./hero.component.css']
 })
 
 /**
  * @author Kevin Suarez
  */
-export class HeroeComponent implements OnInit {
-  heroe!: Heroe
+export class HeroComponent implements OnInit {
+  hero!: Hero
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -28,8 +28,8 @@ export class HeroeComponent implements OnInit {
    */
   ngOnInit(): void {
     this._activatedRoute.params
-      .pipe(switchMap(({ id }) => this._heroesService.getHeroeById(id)))
-      .subscribe((heroe) => (this.heroe = heroe))
+      .pipe(switchMap(({ id }) => this._heroesService.getHeroById(id)))
+      .subscribe((hero: Hero) => (this.hero = hero))
   }
 
   /**

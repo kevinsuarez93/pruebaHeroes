@@ -1,37 +1,37 @@
 
-<mat-grid-list cols="1" *ngIf="!heroe; else divHeroe">
+<mat-grid-list cols="1" *ngIf="!hero; else divHero">
     <mat-grid-tile>
         <mat-spinner></mat-spinner>
     </mat-grid-tile>
 </mat-grid-list>
 
 
-<ng-template #divHeroe>
+<ng-template #divHero>
     
     <div fxLayout="row"
          fxLayout.xs="column"
          fxLayoutGap="30px">
 
          <div fxFlex="50">
-             <h1>{{ heroe.nombre }}</h1>
+             <h1>{{ hero.nombre }}</h1>
              <mat-divider></mat-divider>
              <br>
-             <img [src]="heroe | image">
+             <img [src]="hero | image">
          </div>
 
          <div fxFlex="50">
-             <h1>{{ heroe.casa }}</h1>
+             <h1>{{ hero.casa }}</h1>
              <mat-divider></mat-divider>
 
 
              <mat-list>
                 <mat-list-item>
-                    Primera aparición: {{ heroe.aparicion }} 
+                    Primera aparición: {{ hero.aparicion }} 
                 </mat-list-item>
                 <br>
                 <br>
                 <mat-list-item>
-                    Bibliografia: {{ heroe.bio }} 
+                    Bibliografia: {{ hero.bio }} 
                 </mat-list-item>
              </mat-list>
 
