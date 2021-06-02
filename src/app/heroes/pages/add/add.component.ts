@@ -32,7 +32,7 @@ export class AddComponent implements OnInit {
     id: ['', []]
   })
 
-  //Catalogo
+  //Catalogue
   editors = [
     {
       id: 'DC Comics',
