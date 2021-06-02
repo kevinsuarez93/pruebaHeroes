@@ -1,0 +1,85 @@
+<h1>Listado de Héroes</h1>
+<mat-divider></mat-divider>
+<br>
+
+
+<div class="example-header" fxLayout="row">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+</div>
+
+
+<div class="example-container mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let heroe" data-label="id"> {{heroe.id}} </mat-cell>
+      </ng-container>
+  
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let heroe" data-label="nombre"> {{heroe.nombre}} </mat-cell>
+      </ng-container>
+  
+      <!-- Biografia Column -->
+      <ng-container matColumnDef="bio">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Biografia </mat-header-cell>
+        <mat-cell *matCellDef="let heroe" data-label="bio"> {{heroe.bio}} </mat-cell>
+      </ng-container>
+
+      <!-- Imagen Column -->
+      <ng-container matColumnDef="img">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </mat-header-cell>
+        <mat-cell *matCellDef="let heroe" data-label="img">
+             <img mat-card-image class="small-flag" [src]="heroe | image"> 
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Aparición Column -->
+      <ng-container matColumnDef="aparicion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Aparición </mat-header-cell>
+        <mat-cell *matCellDef="let heroe" data-label="aparicion"> {{heroe.aparicion}} </mat-cell>
+      </ng-container>
+
+      
+
+      <!-- Accion Column -->
+      <ng-container matColumnDef="accion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Acción </mat-header-cell>
+        <mat-cell *matCellDef="let heroe" data-label="accion">
+            <button mat-button 
+                    color="info"
+                    [routerLink]="['/heroes', heroe.id ]">
+                    <mat-icon>visibility</mat-icon>
+                Ver
+            </button>
+
+            <button mat-button 
+                    color="info"
+                    [routerLink]="['/heroes/editar', heroe.id ]">
+                    <mat-icon>edit</mat-icon>
+                Editar
+            </button>
+            <button 
+                    mat-button
+                    (click)="deleteHeroe(heroe)"
+                    color="warn">
+                <mat-icon>remove</mat-icon>
+                Borrar
+            </button>
+        </mat-cell>
+      </ng-container> 
+      <!-- Fin Accion Column -->
+      
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>

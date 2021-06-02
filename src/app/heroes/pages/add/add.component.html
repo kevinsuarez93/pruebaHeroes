@@ -1,0 +1,100 @@
+
+<h1>
+    {{ ( heroe.id )? 'Editar' : 'Nuevo' }}
+    Héroe
+    <small>{{ heroe.nombre }}</small> 
+</h1>
+
+<form autocomplete="off" [formGroup]="myForm">
+    <div fxLayout="row"
+        fxLayoutGap="40px"
+        fxLayout.xs="column">
+
+        <div fxFlex="50" fxLayout="column">
+            
+            <div fxLayout="row" 
+                fxLayout.xs="column" 
+                fxLayoutGap="20px">
+                <mat-form-field fxFlex="100" fxLayout.xs="column" >
+                    <mat-label>*Super Héroe</mat-label>
+                    <input matInput                         
+                        type="text"
+                        formControlName="nombre"
+                        appInputUpperCase>
+                    <span class="form-text text-danger"
+                            *ngIf="validateField('nombre')">
+                        Este campo es obligatorio
+                    </span>
+                </mat-form-field>
+            </div>
+            <br>
+            <mat-form-field>
+                <mat-label>*Primera Aparición</mat-label>
+                <input matInput
+                    type="text"
+                    formControlName="aparicion">
+                    <span class="form-text text-danger"
+                            *ngIf="validateField('aparicion')">
+                        Este campo es obligatorio
+                    </span>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>*Bibliografia</mat-label>
+                <input matInput
+                    type="text"
+                    formControlName="bio">
+                <span class="form-text text-danger"
+                        *ngIf="validateField('bio')">
+                    Este campo es obligatorio
+                </span>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>*Creador</mat-label>
+                <mat-select formControlName="casa">
+                    <mat-option *ngFor="let editor of editores"
+                                [value]="editor.id">
+                        {{ editor.desc }}
+                    </mat-option>
+                </mat-select>
+                <span class="form-text text-danger"
+                        *ngIf="validateField('casa')">
+                    Este campo es obligatorio
+                </span>
+            </mat-form-field>
+            <br>
+            <!-- <mat-form-field>
+                <mat-label>Foto Url</mat-label>
+                <input matInput
+                    type="url"
+                    formControlName="img">
+                <span class="form-text text-danger"
+                    *ngIf="validateField('img')">
+                    Este campo no es una url valida
+                </span>
+            </mat-form-field> -->
+            <br>
+            <div fxLayout>
+                <button mat-raised-button 
+                        color="primary"
+                        (click)="save()"                      
+                        >
+                    <mat-icon>edit</mat-icon>
+                    {{ ( heroe.id )? 'Actualizar' : 'Crear' }}
+                </button>
+                <span class="spacer"></span>
+                <button *ngIf="heroe.id"
+                        mat-raised-button
+                        (click)="deleteHeroe()"
+                        color="warn">
+                    <mat-icon>remove</mat-icon>
+                    Borrar
+                </button>
+            </div>
+        </div>
+        <div fxFlex="50">
+            <img [src]="heroe | image">
+        </div>
+    </div>
+</form>

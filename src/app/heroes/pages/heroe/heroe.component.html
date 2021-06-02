@@ -1,0 +1,52 @@
+
+<mat-grid-list cols="1" *ngIf="!heroe; else divHeroe">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<ng-template #divHeroe>
+    
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutGap="30px">
+
+         <div fxFlex="50">
+             <h1>{{ heroe.nombre }}</h1>
+             <mat-divider></mat-divider>
+             <br>
+             <img [src]="heroe | image">
+         </div>
+
+         <div fxFlex="50">
+             <h1>{{ heroe.casa }}</h1>
+             <mat-divider></mat-divider>
+
+
+             <mat-list>
+                <mat-list-item>
+                    Primera aparición: {{ heroe.aparicion }} 
+                </mat-list-item>
+                <br>
+                <br>
+                <mat-list-item>
+                    Bibliografia: {{ heroe.bio }} 
+                </mat-list-item>
+             </mat-list>
+
+             <br>
+             <br>
+             <button mat-button
+                     color="warn"
+                     (click)="return()">
+                 Regresar
+             </button>
+         </div>
+
+    </div>
+
+
+</ng-template>
+
+
