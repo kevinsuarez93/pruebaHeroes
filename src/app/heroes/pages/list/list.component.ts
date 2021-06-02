@@ -20,10 +20,10 @@ export class ListComponent implements AfterViewInit {
   heroes: Hero[] = []
   displayedColumns: string[] = [
     'id',
-    'nombre',
+    'name',
     'bio',
     'img',
-    'aparicion',
+    'appearance',
     'accion'
   ]
   dataSource = new MatTableDataSource<Hero>(this.heroes)

@@ -20,10 +20,10 @@
         <mat-cell *matCellDef="let hero" data-label="id"> {{hero.id}} </mat-cell>
       </ng-container>
   
-      <!-- Nombre Column -->
-      <ng-container matColumnDef="nombre">
+      <!-- name Column -->
+      <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-        <mat-cell *matCellDef="let hero" data-label="nombre"> {{hero.nombre}} </mat-cell>
+        <mat-cell *matCellDef="let hero" data-label="name"> {{hero.name}} </mat-cell>
       </ng-container>
   
       <!-- Biografia Column -->
@@ -41,9 +41,9 @@
       </ng-container>
   
       <!-- Aparición Column -->
-      <ng-container matColumnDef="aparicion">
+      <ng-container matColumnDef="appearance">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Aparición </mat-header-cell>
-        <mat-cell *matCellDef="let hero" data-label="aparicion"> {{hero.aparicion}} </mat-cell>
+        <mat-cell *matCellDef="let hero" data-label="appearance"> {{hero.appearance}} </mat-cell>
       </ng-container>
 
       

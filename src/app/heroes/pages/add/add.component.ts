@@ -21,14 +21,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 export class AddComponent implements OnInit {
   myForm: FormGroup = this._fb.group({
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    name: ['', [Validators.required, Validators.minLength(3)]],
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    aparicion: ['', [Validators.required, Validators.minLength(3)]],
+    appearance: ['', [Validators.required, Validators.minLength(3)]],
     // eslint-disable-next-line @typescript-eslint/unbound-method
     bio: ['', [Validators.required, Validators.minLength(3)]],
 
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    casa: ['', [Validators.required]],
+    home: ['', [Validators.required]],
     id: ['', []]
   })
 
@@ -46,10 +46,10 @@ export class AddComponent implements OnInit {
 
   hero: Hero = {
     id: '',
-    nombre: '',
+    name: '',
     bio: '',
-    aparicion: '',
-    casa: '',
+    appearance: '',
+    home: '',
     img: ''
   }
 
@@ -76,10 +76,10 @@ export class AddComponent implements OnInit {
         this.hero = hero
         this.myForm.reset({
           id: hero.id,
-          nombre: hero.nombre,
+          name: hero.name,
           bio: hero.bio,
-          aparicion: hero.aparicion,
-          casa: hero.casa,
+          appearance: hero.appearance,
+          home: hero.home,
           img: hero.img
         })
       })

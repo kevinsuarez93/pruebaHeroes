@@ -1,16 +1,16 @@
 
 <mat-card>
     <mat-card-header>
-        <mat-card-title> {{ hero.nombre }} </mat-card-title>
+        <mat-card-title> {{ hero.name }} </mat-card-title>
     </mat-card-header>
 
     <img mat-card-image [src]="hero | image">
     <!-- <img mat-card-image src="assets/heroes/{{hero.id}}.jpg"> -->
 
     <mat-card-content>
-        <h3>{{ hero.casa }}</h3>
+        <h3>{{ hero.home }}</h3>
         <p>
-            <strong>Primera aparición</strong> {{ hero.aparicion }}
+            <strong>Primera aparición</strong> {{ hero.appearance }}
             <br>
             <strong> Bibliografia: </strong> {{ hero.bio }}
         </p>

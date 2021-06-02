@@ -54,7 +54,7 @@ export class SearchComponent {
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const hero: Hero = event.option.value
-    this.term = hero.nombre
+    this.term = hero.name
 
     this._heroesService.getHeroById(hero.id!).subscribe((hero: Hero) => {
       this.heroSelected = hero
