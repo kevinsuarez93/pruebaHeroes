@@ -28,7 +28,8 @@ export class AddComponent implements OnInit {
     bio: ['', [Validators.required, Validators.minLength(3)]],
 
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    casa: ['', [Validators.required]]
+    casa: ['', [Validators.required]],
+    id: ['', []]
   })
 
   //Catalogo
@@ -44,6 +45,7 @@ export class AddComponent implements OnInit {
   ]
 
   heroe: Heroe = {
+    id: '',
     nombre: '',
     bio: '',
     aparicion: '',
